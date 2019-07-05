@@ -12,7 +12,6 @@ use crate::{
 };
 
 use hal::{self, Device as _, Swapchain as _};
-pub use hal::PresentMode;
 use log::{trace, warn};
 use parking_lot::Mutex;
 
@@ -76,6 +75,22 @@ pub struct SwapChain<B: hal::Backend> {
     pub(crate) sem_available: B::Semaphore,
     #[cfg_attr(not(feature = "local"), allow(dead_code))] //TODO: remove
     pub(crate) command_pool: hal::CommandPool<B, hal::General>,
+}
+
+#[repr(C)]
+#[derive(Clone, Debug)]
+pub enum PresentMode {
+    NoVsync = 0,
+    Vsync = 1,
+}
+
+impl Into<hal::PresentMode> for PresentMode {
+    fn into(self) -> hal::PresentMode {
+        match self {
+            PresentMode::NoVsync => hal::PresentMode::Immediate,
+            PresentMode::Vsync => hal::PresentMode::Fifo,
+        }
+    }
 }
 
 #[repr(C)]

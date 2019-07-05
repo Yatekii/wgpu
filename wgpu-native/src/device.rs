@@ -1731,9 +1731,10 @@ pub fn device_create_swap_chain(
         desc.height,
         conv::map_texture_format(desc.format),
         num_frames, //TODO: configure?
-    ).with_mode(desc.present_mode);
+    );
     //TODO: check for supported
     config.composite_alpha = hal::window::CompositeAlpha::OPAQUE;
+    config.present_mode = desc.present_mode.clone().into();
 
     if let Some(formats) = formats {
         assert!(
