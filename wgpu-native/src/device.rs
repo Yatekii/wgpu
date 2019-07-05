@@ -1731,7 +1731,7 @@ pub fn device_create_swap_chain(
         desc.height,
         conv::map_texture_format(desc.format),
         num_frames, //TODO: configure?
-    ).with_mode(hal::PresentMode::Immediate);
+    ).with_mode(desc.present_mode);
     //TODO: check for supported
     config.composite_alpha = hal::window::CompositeAlpha::OPAQUE;
 

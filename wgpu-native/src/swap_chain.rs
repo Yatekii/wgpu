@@ -12,6 +12,7 @@ use crate::{
 };
 
 use hal::{self, Device as _, Swapchain as _};
+pub use hal::PresentMode;
 use log::{trace, warn};
 use parking_lot::Mutex;
 
@@ -84,6 +85,7 @@ pub struct SwapChainDescriptor {
     pub format: resource::TextureFormat,
     pub width: u32,
     pub height: u32,
+    pub present_mode: PresentMode,
 }
 
 impl SwapChainDescriptor {
