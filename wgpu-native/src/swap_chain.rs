@@ -78,19 +78,10 @@ pub struct SwapChain<B: hal::Backend> {
 }
 
 #[repr(C)]
-#[derive(Clone, Debug)]
+#[derive(Copy, Clone, Debug)]
 pub enum PresentMode {
     NoVsync = 0,
     Vsync = 1,
-}
-
-impl Into<hal::PresentMode> for PresentMode {
-    fn into(self) -> hal::PresentMode {
-        match self {
-            PresentMode::NoVsync => hal::PresentMode::Immediate,
-            PresentMode::Vsync => hal::PresentMode::Fifo,
-        }
-    }
 }
 
 #[repr(C)]
