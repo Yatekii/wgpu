@@ -1724,7 +1724,7 @@ pub fn device_create_swap_chain(
             .supports_queue_family(&adapter.queue_families[0]));
         surface.raw.compatibility(&adapter.physical_device)
     };
-    let num_frames = 5;//= caps.image_count.start; //TODO: configure?
+    let num_frames = caps.image_count.start; //TODO: configure?
     let usage = conv::map_texture_usage(desc.usage, hal::format::Aspects::COLOR);
     let mut config = hal::SwapchainConfig::new(
         desc.width,
