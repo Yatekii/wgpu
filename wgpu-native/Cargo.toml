@@ -35,7 +35,7 @@ gfx-backend-dx11 = { version = "0.2", optional = true }
 gfx-backend-dx12 = { version = "0.2", optional = true }
 gfx-backend-metal = { version = "0.2", optional = true }
 # gfx-backend-gl = { version = "0.2", optional = true }
-gfx-backend-gl = { version = "0.2", optional = true, git = "https://github.com/hecrj/gfx/", branch="web" }
+gfx-backend-gl = { optional = true, git = "https://github.com/hecrj/gfx/", branch="web" }
 parking_lot = { version = "0.8" }
 rendy-memory = "0.3"
 rendy-descriptor = "0.3"
